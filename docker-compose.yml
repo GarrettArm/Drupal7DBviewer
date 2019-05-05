@@ -1,0 +1,42 @@
+version: '3.7'
+
+networks:
+  db7_network:
+    driver: bridge
+
+volumes:
+  drupal7db_data:
+
+services:
+  drupal7db:
+    image: mysql:8.0.15
+    container_name: drupal7db
+    env_file: .env
+    networks:
+      - db7_network
+    volumes:
+      - drupal7db_data:/var/lib/mysql
+      - ./shared:/shared/
+      - ./mysql_entrypoint.sql:/docker-entrypoint-initdb.d/entrypoint.sql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+
+  drupal7phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7
+    container_name: drupal7phpmyadmin
+    env_file: .env
+    environment:
+      PMA_HOST: ${MYSQL_HOST}
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_ARBITRARY: 0
+      PMA_PORT: 3306
+    networks:
+      - db7_network
+    volumes:
+      - /sessions
+    depends_on:
+      - drupal7db
+    restart: always
+    ports:
+      - "5150:80"
