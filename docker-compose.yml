@@ -35,6 +35,7 @@ services:
       - db7_network
     volumes:
       - /sessions
+      - ./conf/nginx/nginx.conf:/etc/nginx.conf
     depends_on:
       - drupal7db
     restart: always
