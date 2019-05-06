@@ -27,15 +27,12 @@ services:
     env_file: .env
     environment:
       PMA_HOST: ${MYSQL_HOST}
-      PMA_USER: ${MYSQL_USER}
-      PMA_PASSWORD: ${MYSQL_PASSWORD}
       PMA_ARBITRARY: 0
       PMA_PORT: 3306
     networks:
       - db7_network
     volumes:
       - /sessions
-      - ./conf/nginx/nginx.conf:/etc/nginx.conf
     depends_on:
       - drupal7db
     restart: always
