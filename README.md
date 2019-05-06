@@ -6,15 +6,16 @@ a tool for viewing the website databases
 #### How to use:
 
  - make a folder named 'shared' in this folder.  Put your sql dumps there.
- - replace the IP address on line 55 of ./conf/nginx/nginx.conf with your local IP address.  In Powershell, you local IP can be found with the command: "Test-Connection -ComputerName (hostname) -Count 1  | Select -ExpandProperty IPV4Address".  In bash, use ifconfig or hostname or such.
- - a folder named 'db_data' will be created on first run.  It will hold your mysql-loaded data automatically.
- - run the script with `docker-compose up`.  On first `up`, wait a few hours while the database populates.  On subsequent `up`'s, the database will update quickly to match the sql dumps.
- - view your database objects at http://localhost:5150 :devilhorns
+ - change the username and passwords in the file named ".env".  These will be your mysql accounts.  Any text is fine, but this is our protection against exposing the database to whole library.
+ - did you change the username and password?
+ - are you sure?
+ - run the script with `docker-compose up -d`.  On first `up`, wait a few hours while the database populates.  On subsequent `up`'s, the database will update quickly to match the sql dumps.
+ - view your database objects at http://localhost:5150  :devilhorns
  - break your databases as you please -- they are your local copy and not tied to any production server.
  - turn off the container with `docker-compose stop` if you wish.
  - restart with `docker-compose up`
  
-##### ./shared/ and ./db_data/ shall not be committed.
+##### ./shared/ and ./db_data/  must not be committed.
 
 #### If you want to get to the mysql prompt:
 

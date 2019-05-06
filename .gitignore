@@ -1,3 +1,4 @@
 db_data/
 shared/
 conf/nginx/nginx.conf
+.env
