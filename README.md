@@ -6,7 +6,7 @@ a tool for viewing the website databases
 #### How to use:
 
  - make a folder named 'shared' in this folder.  Put your sql dumps there.
- - replace the IP address on line 55 of ./conf/nginx/nginx.conf with your local IP address.  www.whatismyip.com will display your local IP. 
+ - replace the IP address on line 55 of ./conf/nginx/nginx.conf with your local IP address.  In Powershell, you local IP can be found with the command: "Test-Connection -ComputerName (hostname) -Count 1  | Select -ExpandProperty IPV4Address".  In bash, use ifconfig or hostname or such.
  - a folder named 'db_data' will be created on first run.  It will hold your mysql-loaded data automatically.
  - run the script with `docker-compose up`.  On first `up`, wait a few hours while the database populates.  On subsequent `up`'s, the database will update quickly to match the sql dumps.
  - view your database objects at http://localhost:5150 :devilhorns
