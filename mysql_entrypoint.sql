@@ -31,5 +31,5 @@ USE sheetmusic;
 source shared/sheetmusic.sql;
 
 # create root user and grant rights
-CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL ON *.* TO 'user'@'%';
+CREATE USER 'localuser'@'localhost' IDENTIFIED BY "$MYSQL_PASSWORD";
+GRANT ALL ON *.* TO 'localuser'@'%';

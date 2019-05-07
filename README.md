@@ -6,11 +6,11 @@ a tool for viewing the website databases
 #### How to use:
 
  - make a folder named 'shared' in this folder.  Put your sql dumps there.
- - change the username and passwords in the file named ".env".  These will be your mysql accounts.  Any text is fine, but this is our protection against exposing the database to whole library.
- - did you change the username and password?
+ - change the localuser password and root passwordin the file named ".env".  These will be your mysql accounts.  Any text is fine, but this is our protection against exposing the database to whole library.
+ - did you change the localuser password and root password?
  - are you sure?
  - run the script with `docker-compose up -d`.  On first `up`, wait a few hours while the database populates.  On subsequent `up`'s, the database will update quickly to match the sql dumps.
- - view your database objects at http://localhost:5150  :devilhorns
+ - view your database objects at http://localhost:5150  (log in with user:'root' password:{whatever you wrote in the .env file}.)  :devilhorns
  - break your databases as you please -- they are your local copy and not tied to any production server.
  - turn off the container with `docker-compose stop` if you wish.
  - restart with `docker-compose up`
@@ -19,8 +19,7 @@ a tool for viewing the website databases
 
 #### If you want to get to the mysql prompt:
 
- - `docker-composer exec drupal7db mysql -u user -p`
- - password is 'password' because no one can access the database except us.
+ - `docker-composer exec drupal7db mysql -u localuser -p`
  
 #### If you want to get to a bash:
  
