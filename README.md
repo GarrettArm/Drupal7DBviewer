@@ -19,7 +19,7 @@ a tool for viewing the website databases
 
 #### If you want to get to the mysql prompt:
 
- - `docker-composer exec drupal7db mysql -u localuser -p`
+ - `docker-compose exec drupal7db mysql -u localuser -p`
  
 #### If you want to get to a bash:
  
